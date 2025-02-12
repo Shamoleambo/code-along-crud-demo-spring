@@ -20,7 +20,7 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> findAll() {
-        TypedQuery<Employee> query = this.entityManager.createQuery("FROM Emplyee", Employee.class);
+        TypedQuery<Employee> query = this.entityManager.createQuery("FROM Employee", Employee.class);
         return query.getResultList();
     }
 }
