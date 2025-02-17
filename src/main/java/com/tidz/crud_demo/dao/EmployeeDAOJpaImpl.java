@@ -3,6 +3,7 @@ package com.tidz.crud_demo.dao;
 import com.tidz.crud_demo.entity.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +23,23 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
     public List<Employee> findAll() {
         TypedQuery<Employee> query = this.entityManager.createQuery("FROM Employee", Employee.class);
         return query.getResultList();
+    }
+
+    @Override
+    public Employee findById(int id) {
+        return this.entityManager.find(Employee.class, id);
+    }
+
+    @Override
+    @Transactional
+    public Employee save(Employee employee) {
+        return this.entityManager.merge(employee);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(int id) {
+        Employee employee = this.entityManager.find(Employee.class, id);
+        this.entityManager.remove(employee);
     }
 }
