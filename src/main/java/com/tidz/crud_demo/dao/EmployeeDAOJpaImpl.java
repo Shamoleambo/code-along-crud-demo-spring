@@ -31,13 +31,11 @@ public class EmployeeDAOJpaImpl implements EmployeeDAO {
     }
 
     @Override
-    @Transactional
     public Employee save(Employee employee) {
         return this.entityManager.merge(employee);
     }
 
     @Override
-    @Transactional
     public void deleteById(int id) {
         Employee employee = this.entityManager.find(Employee.class, id);
         this.entityManager.remove(employee);
