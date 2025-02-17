@@ -3,10 +3,7 @@ package com.tidz.crud_demo.rest;
 import com.tidz.crud_demo.entity.Employee;
 import com.tidz.crud_demo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +31,10 @@ public class EmployeeRestController {
             throw new RuntimeException("Employee id not found - " + id);
         }
         return employee;
+    }
+
+    @PostMapping("/employees")
+    public Employee saveEmployee(@RequestBody Employee employee) {
+        return this.employeeService.save(employee);
     }
 }
