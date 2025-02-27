@@ -1,6 +1,5 @@
 package com.tidz.crud_demo.service;
 
-import com.tidz.crud_demo.dao.EmployeeDAO;
 import com.tidz.crud_demo.entity.Employee;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
